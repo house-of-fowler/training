@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Powered Business Accelerator</title>
+    <style>
+        :root {
+            --primary: #2D3AE3;        /* Rich blue - primary brand color */
+            --primary-dark: #1C2BB8;   /* Darker blue for hover states */
+            --secondary: #7B66FF;      /* Purple - accent color */
+            --accent: #FF6584;         /* Coral - for CTA and highlights */
+            --accent-hover: #FF3F68;   /* Darker coral for hover states */
+            --dark: #1E1E2C;           /* Near black for text */
+            --light: #F8F9FF;          /* Off-white for backgrounds */
+            --gray: #E0E0E5;           /* Light gray for sections */
+            --success: #25D366;        /* Green for success indicators */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+        }
+
+        .wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 25px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .subheader {
+            font-size: 1.4rem;
+            max-width: 800px;
+            margin: 20px auto 40px;
+            line-height: 1.4;
+        }
+
+        /* Login Section */
+        .login-section {
+            background: white;
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .login-section h2 {
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+        }
+
+        .login-form input {
+            width: 100%;
+            padding: 12px 15px;
+            margin-bottom: 20px;
+            border: 2px solid var(--gray);
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .login-form input:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(45, 58, 227, 0.2);
+        }
+
+        .login-button {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 14px 32px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(255, 101, 132, 0.4);
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .login-button:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(255, 101, 132, 0.5);
+        }
+
+        .error-message {
+            color: var(--accent);
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        /* Content Section (Hidden by default) */
+        .content-container {
+            display: none;
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .chapter {
+            background: white;
+            padding: 40px;
+            margin: 30px 0;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .chapter h2 {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--secondary);
+        }
+
+        .chapter h3 {
+            color: var(--secondary);
+            font-size: 1.4rem;
+            margin: 25px 0 15px;
+        }
+
+        .chapter p {
+            margin-bottom: 15px;
+        }
+
+        .chapter ul {
+            margin: 15px 0;
+            padding-left: 25px;
+        }
+
+        .chapter li {
+            margin-bottom: 8px;
+        }
+
+        .bonus-section {
+            background: linear-gradient(to right, rgba(45, 58, 227, 0.05), rgba(123, 102, 255, 0.05));
+            padding: 30px;
+            border-radius: 12px;
+            margin: 30px 0;
+        }
+
+        .bonus-section h2 {
+            color: var(--primary);
+            border-bottom: none;
+            text-align: center;
+        }
+
+        .bonus-section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .bonus-section li {
+            padding-left: 30px;
+            position: relative;
+            margin-bottom: 15px;
+        }
+
+        .bonus-section li:before {
+            content: "🎁";
+            position: absolute;
+            left: 0;
+            top: 2px;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 50px;
+            border-top: 1px solid var(--gray);
+        }
+
+        .footer p {
+            color: var(--dark);
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="wrapper header-content">
+            <h1>AI-Powered Business Accelerator</h1>
+            <p class="subheader">How to Build a Profitable Automated Business Using AI in 30 Days</p>
+        </div>
+    </header>
+    
+    <!-- Login Section -->
+    <section class="login-section" id="login-section">
+        <h2>Access Your Digital Product</h2>
+        <p>Enter your access code to unlock the complete guide.</p>
+        <div class="error-message" id="error-message">Invalid access code. Please try again.</div>
+        <div class="login-form">
+            <input type="password" id="access-code" placeholder="Enter your access code">
+            <button class="login-button" id="login-button">Unlock Content</button>
+        </div>
+    </section>
+    
+    <!-- Content Section (Hidden until unlocked) -->
+    <div class="content-container" id="content-container">
+        <div class="chapter">
+            <h2>Introduction</h2>
+            <p>Welcome to the ultimate guide on leveraging artificial intelligence to build and scale an automated business. This book will take you step by step through proven strategies and AI tools that can help you launch a business that generates revenue with minimal manual effort.</p>
+            <p>Unlike traditional methods, AI enables entrepreneurs to automate content creation, sales, customer service, and more. Whether you are starting from scratch or looking to optimize an existing business, this guide will provide actionable insights to accelerate your journey.</p>
+        </div>
+        
+        <div class="chapter">
+            <h2>Chapter 1: Foundations of AI & Business Automation</h2>
+            
+            <h3>The AI Advantage in Today's Market</h3>
+            <ul>
+                <li>How AI is transforming business and entrepreneurship</li>
+                <li>Key benefits of AI-powered automation</li>
+                <li>Why now is the best time to build an AI-driven business</li>
+            </ul>
+            
+            <h3>Selecting Your AI Business Model</h3>
+            <ul>
+                <li>AI-powered business models with high earning potential</li>
+                <li>A comparison of different AI business opportunities</li>
+                <li>How to choose the right model for your goals and resources</li>
+            </ul>
+            
+            <h3>Essential AI Tools for Entrepreneurs</h3>
+            <ul>
+                <li>Best AI tools for content creation, marketing, and automation</li>
+                <li>AI-driven customer service and analytics tools</li>
+                <li>How to integrate AI tools for maximum efficiency</li>
+            </ul>
+        </div>
+        
+        <div class="chapter">
+            <h2>Chapter 2: AI for Content Creation & Social Media</h2>
+            
+            <h3>AI-Powered Blogging & SEO Optimization</h3>
+            <ul>
+                <li>How to use AI to generate high-quality blog posts</li>
+                <li>SEO strategies to rank AI-generated content</li>
+                <li>Monetizing AI-written content effectively</li>
+            </ul>
+            
+            <h3>Automated Video & YouTube Channel Growth</h3>
+            <ul>
+                <li>Creating AI-generated videos without appearing on camera</li>
+                <li>Tools for automating video editing and voiceovers</li>
+                <li>Monetization strategies for AI-powered YouTube channels</li>
+            </ul>
+            
+            <h3>AI for Social Media Growth & Engagement</h3>
+            <ul>
+                <li>Automating social media posts and interactions</li>
+                <li>AI-generated graphics and viral content strategies</li>
+                <li>Using AI chatbots for audience engagement</li>
+            </ul>
+        </div>
+        
+        <div class="chapter">
+            <h2>Chapter 3: AI for E-Commerce & Passive Income</h2>
+            
+            <h3>AI-Powered Print-on-Demand & Dropshipping</h3>
+            <ul>
+                <li>Finding profitable products using AI research tools</li>
+                <li>Automating store management and customer support</li>
+                <li>Scaling a successful AI-driven e-commerce business</li>
+            </ul>
+            
+            <h3>AI Affiliate Marketing & Lead Generation</h3>
+            <ul>
+                <li>How AI can optimize affiliate marketing efforts</li>
+                <li>Automating email marketing and landing pages</li>
+                <li>Strategies for increasing conversions with AI</li>
+            </ul>
+            
+            <h3>AI Chatbots for Sales & Customer Service</h3>
+            <ul>
+                <li>How AI chatbots can handle sales and customer support</li>
+                <li>Setting up an AI chatbot to improve conversions</li>
+                <li>Case studies of businesses using AI for sales success</li>
+            </ul>
+        </div>
+        
+        <div class="chapter">
+            <h2>Chapter 4: AI-Powered Lead Generation & Sales Funnels</h2>
+            
+            <h3>Automated Lead Generation with AI</h3>
+            <ul>
+                <li>Creating AI-driven lead magnets</li>
+                <li>AI-powered email sequences for nurturing leads</li>
+                <li>Tools to automate customer acquisition</li>
+            </ul>
+            
+            <h3>Optimizing Sales Funnels with AI</h3>
+            <ul>
+                <li>How AI can improve conversion rates</li>
+                <li>Automating landing page optimization</li>
+                <li>A/B testing and AI-driven marketing campaigns</li>
+            </ul>
+            
+            <h3>Using AI Chatbots for High-Ticket Sales</h3>
+            <ul>
+                <li>How AI chatbots close high-ticket deals</li>
+                <li>AI-powered scripts for consultations and sales calls</li>
+                <li>Case studies of AI-driven high-ticket sales</li>
+            </ul>
+        </div>
+        
+        <div class="chapter">
+            <h2>Chapter 5: Scaling with AI & Automation</h2>
+            
+            <h3>AI Analytics & Data-Driven Decision Making</h3>
+            <ul>
+                <li>Tracking business performance with AI analytics</li>
+                <li>AI-powered market research for competitive advantage</li>
+                <li>Automating key business decisions with AI insights</li>
+            </ul>
+            
+            <h3>AI for Time & Task Management</h3>
+            <ul>
+                <li>Automating repetitive tasks with AI assistants</li>
+                <li>Using AI for workflow automation and delegation</li>
+                <li>Maximizing productivity with AI-powered scheduling tools</li>
+            </ul>
+            
+            <h3>Scaling an AI Business to $10K+/Month</h3>
+            <ul>
+                <li>Strategies for reinvesting AI-generated profits</li>
+                <li>Expanding AI-driven lead generation</li>
+                <li>Building a sustainable AI-powered business model</li>
+            </ul>
+        </div>
+        
+        <div class="chapter">
+            <h2>Chapter 6: Monetization & Long-Term Success</h2>
+            
+            <h3>Pricing & Positioning Your AI Business</h3>
+            <ul>
+                <li>How to price AI services and digital products</li>
+                <li>Creating a unique selling proposition in the AI space</li>
+                <li>Attracting high-value clients using AI strategies</li>
+            </ul>
+            
+            <h3>Diversifying AI-Powered Income Streams</h3>
+            <ul>
+                <li>AI-powered coaching, consulting, and digital product sales</li>
+                <li>Passive vs. active income strategies using AI</li>
+                <li>Leveraging AI automation for multiple revenue streams</li>
+            </ul>
+            
+            <h3>Future Trends & Long-Term AI Business Success</h3>
+            <ul>
+                <li>How to stay ahead of AI automation trends</li>
+                <li>Adapting to new AI tools and market shifts</li>
+                <li>Scaling beyond six figures with AI business models</li>
+            </ul>
+        </div>
+        
+        <div class="bonus-section">
+            <h2>Bonus Resources</h2>
+            <ul>
+                <li>AI Business Launch Checklist</li>
+                <li>Pre-Built AI Chatbot for Lead Generation</li>
+                <li>AI Social Media & Content Calendar Template</li>
+                <li>Exclusive Private Community Access</li>
+            </ul>
+        </div>
+        
+        <div class="footer">
+            <p>Copyright © 2025 AI-Powered Business Accelerator. All rights reserved.</p>
+        </div>
+    </div>
+    
+    <script>
+        // Simple password protection script
+        document.addEventListener('DOMContentLoaded', function() {
+            const loginButton = document.getElementById('login-button');
+            const accessCode = document.getElementById('access-code');
+            const errorMessage = document.getElementById('error-message');
+            const loginSection = document.getElementById('login-section');
+            const contentContainer = document.getElementById('content-container');
+            
+            // Set the access code (in a real implementation, this would be verified server-side)
+            const correctAccessCode = "access123";
+            
+            loginButton.addEventListener('click', function() {
+                if(accessCode.value === correctAccessCode) {
+                    // Show content, hide login
+                    loginSection.style.display = 'none';
+                    contentContainer.style.display = 'block';
+                    // Scroll to top
+                    window.scrollTo(0, 0);
+                } else {
+                    // Show error
+                    errorMessage.style.display = 'block';
+                    accessCode.focus();
+                }
+            });
+            
+            // Allow pressing Enter to submit
+            accessCode.addEventListener('keypress', function(e) {
+                if(e.key === 'Enter') {
+                    loginButton.click();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
