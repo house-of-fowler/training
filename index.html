@@ -5,55 +5,434 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI-Powered Online Business Accelerator</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; }
-        .container { width: 80%; margin: auto; text-align: center; padding: 50px 0; }
-        .header { background: #1e90ff; color: white; padding: 20px; font-size: 28px; }
-        .subheader { font-size: 22px; margin: 20px 0; }
-        .cta-button { background: #ff4500; color: white; padding: 15px 30px; font-size: 20px; border: none; cursor: pointer; text-decoration: none; }
-        .cta-button:hover { background: #e63900; }
-        .section { background: white; padding: 40px; margin: 20px 0; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); }
-        .benefits, .testimonials, .pricing { text-align: left; max-width: 800px; margin: auto; }
-        .benefit-item { margin: 10px 0; }
+        :root {
+            --primary: #2D3AE3;        /* Rich blue - primary brand color */
+            --primary-dark: #1C2BB8;   /* Darker blue for hover states */
+            --secondary: #7B66FF;      /* Purple - accent color */
+            --accent: #FF6584;         /* Coral - for CTA and highlights */
+            --accent-hover: #FF3F68;   /* Darker coral for hover states */
+            --dark: #1E1E2C;           /* Near black for text */
+            --light: #F8F9FF;          /* Off-white for backgrounds */
+            --gray: #E0E0E5;           /* Light gray for sections */
+            --success: #25D366;        /* Green for success indicators */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+        }
+
+        .wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 25px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .subheader {
+            font-size: 1.4rem;
+            max-width: 800px;
+            margin: 20px auto 40px;
+            line-height: 1.4;
+        }
+
+        /* CTA Buttons */
+        .cta-button {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 16px 36px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(255, 101, 132, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(255, 101, 132, 0.5);
+        }
+
+        /* Sections */
+        .section {
+            background: white;
+            padding: 60px 0;
+            margin: 30px 0;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .section-inner {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: var(--primary);
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        /* Benefits Section */
+        .benefits {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            margin: 15px 0;
+            padding: 15px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .benefit-item:hover {
+            background: rgba(123, 102, 255, 0.05);
+            transform: translateX(5px);
+        }
+
+        .benefit-icon {
+            color: var(--success);
+            font-size: 1.2rem;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .benefit-text {
+            font-size: 1.1rem;
+        }
+
+        /* What You'll Learn Section */
+        .curriculum {
+            margin-top: 30px;
+        }
+
+        .curriculum-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            background: var(--light);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .curriculum-item-number {
+            width: 30px;
+            height: 30px;
+            background: var(--secondary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .curriculum-item-content {
+            font-size: 1.1rem;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .testimonial {
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: 10px;
+            background: linear-gradient(to right, rgba(45, 58, 227, 0.05), rgba(123, 102, 255, 0.05));
+            position: relative;
+        }
+
+        .testimonial-content {
+            font-style: italic;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .testimonial-content::before {
+            content: '❝';
+            position: absolute;
+            left: 0;
+            top: -5px;
+            font-size: 2rem;
+            color: var(--secondary);
+            opacity: 0.5;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            text-align: right;
+            color: var(--primary);
+        }
+
+        /* Pricing Section */
+        .pricing-options {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .pricing-plan {
+            border: 2px solid var(--gray);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .pricing-plan:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(45, 58, 227, 0.1);
+        }
+
+        .pricing-plan.highlighted {
+            border-color: var(--primary);
+            background: linear-gradient(135deg, rgba(45, 58, 227, 0.05) 0%, rgba(123, 102, 255, 0.05) 100%);
+        }
+
+        .plan-name {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .plan-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 15px 0;
+            color: var(--dark);
+        }
+
+        .plan-features {
+            list-style: none;
+            margin: 25px 0;
+            text-align: left;
+        }
+
+        .plan-features li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .plan-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--success);
+        }
+
+        /* Footer CTA */
+        .footer-cta {
+            text-align: center;
+            padding: 60px 0;
+        }
+
+        .footer-cta-title {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        /* Responsive Design */
+        @media (min-width: 768px) {
+            .benefits {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .pricing-options {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .header h1 {
+                font-size: 3rem;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="header">AI-Powered Online Business Accelerator</div>
-    <div class="container">
-        <h2 class="subheader">Learn How to Automate & Scale a Profitable Online Business Using AI in Just 6 Weeks!</h2>
-        <a href="https://www.paypal.com/ncp/payment/ABK39DA9RWTUA" target="_blank" class="cta-button">Enroll Now</a>
-    </div>
-    
-    <div class="section">
-        <h2>Why Join This Course?</h2>
-        <div class="benefits">
-            <div class="benefit-item">✅ Learn how to use AI to generate passive income</div>
-            <div class="benefit-item">✅ Automate content creation, marketing, and sales</div>
-            <div class="benefit-item">✅ Get access to pre-built AI tools & workflows</div>
-            <div class="benefit-item">✅ Step-by-step guidance from industry experts</div>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="wrapper header-content">
+            <h1>AI-Powered Online Business Accelerator</h1>
+            <p class="subheader">Learn How to Automate & Scale a Profitable Online Business Using AI in Just 6 Weeks!</p>
+            <a href="https://www.paypal.com/ncp/payment/ABK39DA9RWTUA" target="_blank" class="cta-button">Enroll Now - Limited Spots!</a>
         </div>
-    </div>
+    </header>
     
-    <div class="section">
-        <h2>What You’ll Learn</h2>
-        <ul>
-            <li>AI-Powered Content Creation & Social Media Automation</li>
-            <li>Building and Scaling an AI-Driven Online Business</li>
-            <li>AI Chatbots for Lead Generation & Sales</li>
-            <li>AI-Optimized Sales Funnels & Email Marketing</li>
-        </ul>
-    </div>
+    <!-- Benefits Section -->
+    <section class="section">
+        <div class="section-inner">
+            <h2>Why Join This Course?</h2>
+            <div class="benefits">
+                <div class="benefit-item">
+                    <span class="benefit-icon">✓</span>
+                    <div class="benefit-text">Learn how to use AI to generate passive income streams without technical expertise</div>
+                </div>
+                <div class="benefit-item">
+                    <span class="benefit-icon">✓</span>
+                    <div class="benefit-text">Automate content creation, marketing, and sales processes to save 20+ hours per week</div>
+                </div>
+                <div class="benefit-item">
+                    <span class="benefit-icon">✓</span>
+                    <div class="benefit-text">Get exclusive access to our pre-built AI tools & workflows worth $2,997</div>
+                </div>
+                <div class="benefit-item">
+                    <span class="benefit-icon">✓</span>
+                    <div class="benefit-text">Step-by-step guidance from industry experts who have built 7-figure AI businesses</div>
+                </div>
+            </div>
+        </div>
+    </section>
     
-    <div class="section testimonials">
-        <h2>What Our Students Say</h2>
-        <p>"This course transformed my business! I automated my marketing and doubled my revenue in 2 months." - Alex P.</p>
-        <p>"The AI tools and strategies taught here are game-changers. Highly recommended!" - Sarah L.</p>
-    </div>
+    <!-- What You'll Learn Section -->
+    <section class="section">
+        <div class="section-inner">
+            <h2>What You'll Learn</h2>
+            <div class="curriculum">
+                <div class="curriculum-item">
+                    <div class="curriculum-item-number">1</div>
+                    <div class="curriculum-item-content">AI-Powered Content Creation & Social Media Automation</div>
+                </div>
+                <div class="curriculum-item">
+                    <div class="curriculum-item-number">2</div>
+                    <div class="curriculum-item-content">Building and Scaling an AI-Driven Online Business</div>
+                </div>
+                <div class="curriculum-item">
+                    <div class="curriculum-item-number">3</div>
+                    <div class="curriculum-item-content">AI Chatbots for Lead Generation & Sales</div>
+                </div>
+                <div class="curriculum-item">
+                    <div class="curriculum-item-number">4</div>
+                    <div class="curriculum-item-content">AI-Optimized Sales Funnels & Email Marketing</div>
+                </div>
+            </div>
+        </div>
+    </section>
     
-    <div class="section pricing" id="pricing">
-        <h2>Enrollment Options</h2>
-        <p><strong>Standard Package:</strong> $997 - Full course access + AI toolkit</p>
-        <p><strong>VIP Package:</strong> $2,500 - Lifetime access</p>
-        <a href="https://www.paypal.com/ncp/payment/ABK39DA9RWTUA" target="_blank" class="cta-button">Enroll Now</a>
-    </div>
+    <!-- Testimonials Section -->
+    <section class="section">
+        <div class="section-inner">
+            <h2>What Our Students Say</h2>
+            <div class="testimonials">
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        This course transformed my business! I automated my marketing and doubled my revenue in 2 months.
+                    </div>
+                    <div class="testimonial-author">- Alex P., Digital Entrepreneur</div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        The AI tools and strategies taught here are game-changers. Highly recommended!
+                    </div>
+                    <div class="testimonial-author">- Sarah L., E-commerce Store Owner</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Pricing Section -->
+    <section class="section" id="pricing">
+        <div class="section-inner">
+            <h2>Enrollment Options</h2>
+            <div class="pricing-options">
+                <div class="pricing-plan">
+                    <div class="plan-name">Standard Package</div>
+                    <div class="plan-price">$997</div>
+                    <ul class="plan-features">
+                        <li>Full 6-Week Course Access</li>
+                        <li>AI Business Toolkit</li>
+                        <li>Weekly Group Coaching Calls</li>
+                        <li>Private Community Access</li>
+                    </ul>
+                    <a href="https://www.paypal.com/ncp/payment/ABK39DA9RWTUA" target="_blank" class="cta-button">Enroll Now</a>
+                </div>
+                <div class="pricing-plan highlighted">
+                    <div class="plan-name">VIP Package</div>
+                    <div class="plan-price">$2,500</div>
+                    <ul class="plan-features">
+                        <li>Lifetime Course Access</li>
+                        <li>Advanced AI Business Toolkit</li>
+                        <li>1-on-1 Mentorship (4 Sessions)</li>
+                        <li>Priority Support</li>
+                        <li>Ready-to-Use Business Templates</li>
+                        <li>Early Access to New Features</li>
+                    </ul>
+                    <a href="https://www.paypal.com/ncp/payment/ABK39DA9RWTUA" target="_blank" class="cta-button">Enroll as VIP</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer CTA Section -->
+    <section class="footer-cta">
+        <div class="wrapper">
+            <h2 class="footer-cta-title">Ready to Transform Your Business with AI?</h2>
+            <a href="https://www.paypal.com/ncp/payment/ABK39DA9RWTUA" target="_blank" class="cta-button">Secure Your Spot Today</a>
+        </div>
+    </section>
 </body>
 </html>
