@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Powered Online Business Accelerator</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; }
+        .container { width: 80%; margin: auto; text-align: center; padding: 50px 0; }
+        .header { background: #1e90ff; color: white; padding: 20px; font-size: 28px; }
+        .subheader { font-size: 22px; margin: 20px 0; }
+        .cta-button { background: #ff4500; color: white; padding: 15px 30px; font-size: 20px; border: none; cursor: pointer; text-decoration: none; }
+        .cta-button:hover { background: #e63900; }
+        .section { background: white; padding: 40px; margin: 20px 0; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); }
+        .benefits, .testimonials, .pricing { text-align: left; max-width: 800px; margin: auto; }
+        .benefit-item { margin: 10px 0; }
+    </style>
+</head>
+<body>
+    <div class="header">AI-Powered Online Business Accelerator</div>
+    <div class="container">
+        <h2 class="subheader">Learn How to Automate & Scale a Profitable Online Business Using AI in Just 6 Weeks!</h2>
+        <a href="#pricing" class="cta-button">Enroll Now</a>
+    </div>
+    
+    <div class="section">
+        <h2>Why Join This Course?</h2>
+        <div class="benefits">
+            <div class="benefit-item">✅ Learn how to use AI to generate passive income</div>
+            <div class="benefit-item">✅ Automate content creation, marketing, and sales</div>
+            <div class="benefit-item">✅ Get access to pre-built AI tools & workflows</div>
+            <div class="benefit-item">✅ Step-by-step guidance from industry experts</div>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h2>What You’ll Learn</h2>
+        <ul>
+            <li>AI-Powered Content Creation & Social Media Automation</li>
+            <li>Building and Scaling an AI-Driven Online Business</li>
+            <li>AI Chatbots for Lead Generation & Sales</li>
+            <li>AI-Optimized Sales Funnels & Email Marketing</li>
+        </ul>
+    </div>
+    
+    <div class="section testimonials">
+        <h2>What Our Students Say</h2>
+        <p>"This course transformed my business! I automated my marketing and doubled my revenue in 2 months." - Alex P.</p>
+        <p>"The AI tools and strategies taught here are game-changers. Highly recommended!" - Sarah L.</p>
+    </div>
+    
+    <div class="section pricing" id="pricing">
+        <h2>Enrollment Options</h2>
+        <p><strong>Standard Package:</strong> $997 - Full course access + AI toolkit</p>
+        <p><strong>VIP Package:</strong> $2,500 - Includes 1-on-1 coaching & lifetime access</p>
+        <a href="#" class="cta-button">Enroll Now</a>
+    </div>
+</body>
+</html>
